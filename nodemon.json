@@ -1,0 +1,6 @@
+{
+  "env": {
+    "MONGO_DB_LINK": "mongodb+srv://ritviknagpal48:retroa55@testingapi-yy853.mongodb.net/test?retryWrites=true&w=majority",
+    "BASE_URL": "http://localhost:3000"
+  }
+}
