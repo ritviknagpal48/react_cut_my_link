@@ -8,6 +8,7 @@ const getIP = require('ipware')().get_ip;
 const mongoose = require('mongoose');
 var validator = require('validator');
 const Url = require('../models/url');
+const Url_stats = require('../models/url_stats');
 
 router.post('/', (req, res, next) => {
   // if (!validator.isURL(req.body.base_url)) {
@@ -16,8 +17,8 @@ router.post('/', (req, res, next) => {
   //   });
   // }
 
-  var ipInfo = getIP(req);
-  console.log(ipInfo);
+  // var ipInfo = getIP(req);
+  // console.log(ipInfo);
   if (!validator.isURL(req.body.long_url)) {
     return res.status(404).json({
       message: 'Not a valid long url'
@@ -37,7 +38,8 @@ router.post('/', (req, res, next) => {
           _id: new mongoose.Types.ObjectId(),
           base_url: req.body.base_url,
           long_url: req.body.long_url,
-          short_id: new_id
+          short_id: new_id,
+          date: Date().toString()
         });
         new_url
           .save()
@@ -56,6 +58,21 @@ router.post('/', (req, res, next) => {
             });
           });
       }
+    });
+});
+router.get('/', (req, res, next) => {
+  Url.find({})
+    .exec()
+    .then(result => {
+      res.status(200).json({
+        message: 'all urls fetched successfully',
+        urls: result
+      });
+    })
+    .catch(err => {
+      res.status(500).json({
+        error: err
+      });
     });
 });
 
@@ -93,5 +110,26 @@ router.post('/custom/:custom_name', checkAuth, (req, res, next) => {
       }
     });
 });
+
+// router.delete('/', (req, res, next) => {
+//   Url.remove({})
+//     .exec()
+//     .then(result => {
+//       console.log('All data deleted');
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     });
+//   Url_stats.remove({})
+//     .exec()
+//     .then(result => {
+//       console.log('All stats deleted');
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     });
+
+//   res.status(200).send('All data removed successfully');
+// });
 
 module.exports = router;

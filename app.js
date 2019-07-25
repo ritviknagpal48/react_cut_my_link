@@ -28,10 +28,10 @@ app.use((req, res, next) => {
   }
   next();
 });
-app.use(expressip().getIpInfoMiddleware);
-app.get('/', function(req, res) {
-  res.send(req.ipInfo);
-});
+// app.use(expressip().getIpInfoMiddleware);
+// app.get('/', function(req, res) {
+//   res.send(req.ipInfo);
+// });
 
 app.use('/api/url', urlRoute);
 

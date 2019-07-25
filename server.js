@@ -2,7 +2,7 @@ const http = require('http');
 const app = require('./app');
 const requestStats = require('request-stats');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 const server = http.createServer(app);
 
@@ -12,5 +12,5 @@ const server = http.createServer(app);
 // });
 
 server.listen(port, (req, res) => {
-  console.log('server started on http://localhost:3000');
+  console.log('server started on http://localhost:3001');
 });
