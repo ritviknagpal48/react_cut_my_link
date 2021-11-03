@@ -28,7 +28,7 @@
     "short-id": "0.1.0-1",
     "url-exists": "^1.0.3",
     "valid-url": "^1.0.9",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
