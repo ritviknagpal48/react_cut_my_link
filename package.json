@@ -17,7 +17,7 @@
     "externalip": "^1.0.2",
     "iplocation": "^6.1.0",
     "ipware": "^2.0.0",
-    "mongoose": "^5.6.5",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "node-where": "^1.1.0",
     "nodemon": "^1.19.1",
